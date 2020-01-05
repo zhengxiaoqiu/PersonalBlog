@@ -1,0 +1,21 @@
+.every_day {
+    background: white;
+    width: 100%;
+    text-align: left;
+    border-radius: 5px;
+    box-shadow: 3px 4px 3px #888;
+    padding: 10px 15px;
+
+}
+
+.every_day span {
+    display: block;
+    font-size: 12px;
+    margin-bottom: 5px;
+    color: slateblue;
+}
+
+
+
+
+
