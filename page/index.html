@@ -5,6 +5,7 @@
     <title>个人博客</title>
     <link rel="stylesheet" href="./css/base.css">
     <link rel="stylesheet" href="./css/index.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"> </script>
 </head>
 <body>
     <header class="header">
@@ -24,71 +25,43 @@
     </header>
     <div class="content">
         <div class="content_left">
-            <div class="every_day">
+            <div class="every_day" id="every_day">
                 <span>每日一句</span>
-                <p>afergsergertheryjrtyjru</p>
+                <p v-html="getcontent">afergsergertheryjrtyjru</p>
             </div>
-            <div class="article_list">
-                <div class="article">
-                    <a href="/" class="article_title">啊啊啊啊啊啊啊</a>
-                    <p class="article_content">
-                        啊士大夫嘎嘎微软嘎尔人噶额我热染发膏吧二分部阿道夫吧阿尔法国啊额发表v啊广发温热给啊呃好吧是各地热播是国防部啊额投放货币阿尔法吧发吧发吧啊发吧法国va乳房古巴二分
-                    </p>
-                    <div class="article_foot">发布于2018-10-30 | 浏览（333）| Tags: 幽门杆菌 胃炎 </div>
-                </div>
-                <div class="article">
-                    <a class="article_title">啊啊啊啊啊啊啊</a>
-                    <p class="article_content">
-                        啊士大夫嘎嘎微软嘎尔人噶额我热染发膏吧二分部阿道夫吧阿尔法国啊额发表v啊广发温热给啊呃好吧是各地热播是国防部啊额投放货币阿尔法吧发吧发吧啊发吧法国va乳房古巴二分
-                    </p>
-                    <div class="article_foot">发布于2018-10-30 | 浏览（333）| Tags: 幽门杆菌 胃炎 </div>
+            <div class="article_list" id="article_list">
+                <div class="article" v-for="article in articleList">
+                    <a :href="article.link" class="article_title">{{article.title}}</a>
+                    <p class="article_content">{{article.content}}</p>
+                    <div class="article_foot">发布于{{article.date}} | 浏览（{{article.views}}）| Tags: {{article.tags}} </div>
                 </div>
             </div>
 
         </div>
         <div class="content_right">
-            <div class="right_module">
+            <div class="right_module" id="random_tags">
                 <div>随机标签云</div>
-                <a href="/">asd</a>
-                <a href="/">ww</a>
-                <a href="/">erd</a>
-                <a href="/">qwed</a>
-                <a href="/">adcsdf</a>
+                <a href="/" v-for="tag in tags" :style="{color:randomColor(), fontSize:randomSize()}">{{tag}}</a>
+
             </div>
-            <div class="right_module">
+            <div class="right_module" id="new_hot">
                 <div>最近热门</div>
                <ul>
-                   <li><a href="/">查看你的流量</a> </li>
-                   <li><a href="/">查看你的流量</a> </li>
-                   <li><a href="/">查看你的流量</a> </li>
-                   <li><a href="/">查看你的流量</a> </li>
-                   <li><a href="/">查看你的流量</a> </li>
+                   <li v-for="temp in titleList"><a :href="temp.link">{{temp.title}}</a> </li>
+
                </ul>
             </div>
-            <div class="right_module">
+            <div class="right_module" id="new_comments">
                 <div>最近评论</div>
                 <ul>
-                    <li>
+                    <li v-for="comment in commentList">
                         <div>
-                            <span>这是用户名</span>
-                            <span class="pull_right">这是时间</span>
+                            <span>{{comment.name}}</span>
+                            <span class="pull_right">{{comment.date}}</span>
                         </div>
-                        <p>抱歉，由于种种原因xxxxxxxxxx</p>
+                        <p>{{comment.comment}}</p>
                     </li>
-                    <li>
-                        <div>
-                            <span>这是用户名</span>
-                            <span class="pull_right">这是时间</span>
-                        </div>
-                        <p>抱歉，由于种种原因xxxxxxxxxx</p>
-                    </li>
-                    <li>
-                        <div>
-                            <span>这是用户名</span>
-                            <span class="pull_right">这是时间</span>
-                        </div>
-                        <p>抱歉，由于种种原因xxxxxxxxxx</p>
-                    </li>
+
 
                 </ul>
 
@@ -120,5 +93,7 @@
         </ul>
         <p>Copyright @ 2010-2100 啊手动阀打发</p>
     </footer>
+    <script src="./js/index.js"></script>
+    <script src="./js/base.js"></script>
 </body>
 </html>
