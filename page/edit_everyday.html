@@ -20,9 +20,21 @@
     <script src="bootstrap-wysiwyg-master/bootstrap-wysiwyg.js"></script>
     <script>
       function submit() {
-          alert('提交');
-          var content = $('#editor').html();
 
+          var content = $('#editor').html();
+          $.ajax({
+            url: '/editEveryDay',
+            method: 'post',
+            data: content,
+            success: function (resp) {
+              var result = JSON.parse(resp);
+              alert(result.msg);
+              $('#editor').html('')
+            },
+            error: function (resp) {
+              console.log(resp)
+            }
+          })
       }
     </script>
     <style>
