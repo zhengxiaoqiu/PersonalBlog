@@ -5,7 +5,7 @@ function createConnection () {
         host: '127.0.0.1',
         port: '3306',
         user: 'root',
-        password: 'zxq19960605',
+        password: '111111',
         database: 'my_blog'
     });
 
